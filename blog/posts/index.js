@@ -19,7 +19,7 @@ app.use(cors());
 //   next();
 // });
 
-const posts = {};
+const posts = {}
 
 app.get("/posts", (req, res) => {
   res.send(posts);
@@ -36,7 +36,7 @@ app.post("/posts", async (req, res) => {
 
   await axios.post("http://localhost:3005/events", {
     type: "Post Created",
-    date: {
+    data: {
       id,
       title,
     },
