@@ -1,17 +1,12 @@
 {
-  "name": "posts",
+  "name": "comments",
   "version": "1.0.0",
-  "description": "post server",
+  "description": "comments server",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
   },
-  "keywords": [
-    "Nodejs",
-    "Expressjs",
-    "microservice"
-  ],
-  "author": "SHubham Gupta",
+  "author": "shubham GUpta",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
