@@ -13,7 +13,7 @@ app.get("/posts", (req, res) => {
 });
 
 app.post("/events", (req, res) => {
-  console.log("received", req.body.data);
+  // console.log("received", req.body.data);
   const { type, data } = req.body;
 
   if (type === "Post Created") {
@@ -23,12 +23,26 @@ app.post("/events", (req, res) => {
   }
 
   if (type === "Comment added") {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
     const post = posts[postId];
-    post.comments.push({ id, content });
+    const comment = {};
+    comment[id] = { id, content, status };
+    post.comments = { ...post.comments, ...comment };
     res.status(200).send({});
   }
-  console.log("posts", posts);
+
+  if (type === "comment updated") {
+    console.log("query service posts ", posts);
+    console.log("query service posts ", posts[data.postId].comments[data.id]);
+    console.log("query service req.body", req.body);
+    const updatedComment = {
+      id: data.id,
+      content: data.content,
+      status: data.status,
+    };
+    posts[data.postId].comments[data.id] = updatedComment;
+    res.status(200).send({});
+  }
 });
 
 app.listen(3003, () => {
