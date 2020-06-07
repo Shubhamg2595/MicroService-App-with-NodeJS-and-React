@@ -15,6 +15,8 @@ export default () => {
     fetchPosts();
   }, []);
 
+  console.log("2595 posts", posts);
+
   const renderedPosts = Object.values(posts).map((post) => {
     return (
       <div
