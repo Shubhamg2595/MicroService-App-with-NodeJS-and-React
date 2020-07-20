@@ -12,11 +12,11 @@ app.post("/events", (req, res) => {
 
   events.push(event);
 
-  axios.post("http://localhost:3000/events", event); //posts
-  axios.post("http://localhost:3001/events", event); //coomments
-  axios.post("http://localhost:3003/events", event); //query
+  axios.post("http://posts-clusterip-srv:3000/events", event); //posts
+  // axios.post("http://localhost:3001/events", event); //coomments
+  // axios.post("http://localhost:3003/events", event); //query
   // adding comment creation event for moderation service
-  axios.post("http://localhost:3004/events", event); //moderate service
+  // axios.post("http://localhost:3004/events", event); //moderate service
   // adding another rest call for updatedcomment from moderation service
   res.send({ status: "OK" });
 });
