@@ -7,7 +7,7 @@ export default () => {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:3003/posts"); //queryService
+    const res = await axios.get("http://posts.com/posts"); //queryService
 
     setPosts(res.data);
   };

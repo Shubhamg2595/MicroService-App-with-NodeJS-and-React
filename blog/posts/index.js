@@ -25,7 +25,7 @@ app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
-app.post("/posts", async (req, res) => {
+app.post("/posts/create", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
 
@@ -34,7 +34,7 @@ app.post("/posts", async (req, res) => {
     title,
   };
 
-  await axios.post("http://localhost:3005/events", {
+  await axios.post("http://event-bus-srv:3005/events", {
     type: "Post Created",
     data: {
       id,
@@ -54,6 +54,7 @@ app.post("/events", (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(4000, () => {
+  console.log("updating deployments");
   console.log("Posts service started on Port 3000");
 });

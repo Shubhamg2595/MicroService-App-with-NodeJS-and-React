@@ -25,7 +25,7 @@ app.post("/events", async (req, res) => {
       data.status = "confirmed";
     }
     console.log("ms service", data);
-    await axios.post("http://localhost:3005/events", {
+    await axios.post("http://event-bus-srv:3005/events", {
       type: "comment update",
       data,
     });
